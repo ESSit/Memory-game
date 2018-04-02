@@ -188,7 +188,7 @@ let checkWin = function () {
 
     let starCount = document.querySelectorAll('.starHidden');
     let congratulationMessage = document.createElement('h1');
-    congratulationMessage.innerHTML = 'congratulation!!!';
+    congratulationMessage.innerHTML = 'Congratulation!!!';
     let resultMessage = document.createElement('div');
     resultMessage.innerHTML = 'Your result :&nbsp;&nbsp;' + moveElement.textContent + ' moves !!!';
     resultMessage.className = 'resultMessage';
