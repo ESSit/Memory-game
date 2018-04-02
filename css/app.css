@@ -141,13 +141,8 @@ h1 {
     cursor: pointer;
 }
 
-.pressClickToRestart {
-  margin-top: 1em;
-  text-align: center;
-}
-
 /*
-hide/visible class
+hide element
 */
 .starHidden {
   visibility: collapse;
@@ -161,6 +156,7 @@ hide/visible class
 .hide {
   display: none !important;
 }
+
 
 /*
 animation's
@@ -243,4 +239,9 @@ animation's
   to {
     opacity: 0;
   }
+}
+
+.pressClickToRestart {
+  margin-top: 1em;
+  text-align: center;
 }
