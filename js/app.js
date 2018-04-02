@@ -196,10 +196,14 @@ let checkWin = function () {
     starMessage.className = 'starMessage';
     let starClone = document.querySelector('.stars').cloneNode(true);
     starClone.className = 'starWinMessage';
+    let pressClickToRestart = document.createElement('div');
+    pressClickToRestart.textContent = 'Click to start Again';
+    pressClickToRestart.className = 'pressClickToRestart';
     document.querySelector('.endMessage').appendChild(starMessage);
     document.querySelector('.starMessage').appendChild(starClone);
     document.querySelector('.endMessage').appendChild(congratilationMessage);
     document.querySelector('.endMessage').appendChild(resultMessage);
+    document.querySelector('.endMessage').appendChild(pressClickToRestart);
     clearBeforeRestart();
     document.addEventListener('click', start, false);
   }
