@@ -187,8 +187,8 @@ let checkWin = function () {
     }
 
     let starCount = document.querySelectorAll('.starHidden');
-    let congratilationMessage = document.createElement('h1');
-    congratilationMessage.innerHTML = 'Congratilation!!!';
+    let congratulationMessage = document.createElement('h1');
+    congratulationMessage.innerHTML = 'congratulation!!!';
     let resultMessage = document.createElement('div');
     resultMessage.innerHTML = 'Your result :&nbsp;&nbsp;' + moveElement.textContent + ' moves !!!';
     resultMessage.className = 'resultMessage';
@@ -201,7 +201,7 @@ let checkWin = function () {
     pressClickToRestart.className = 'pressClickToRestart';
     document.querySelector('.endMessage').appendChild(starMessage);
     document.querySelector('.starMessage').appendChild(starClone);
-    document.querySelector('.endMessage').appendChild(congratilationMessage);
+    document.querySelector('.endMessage').appendChild(congratulationMessage);
     document.querySelector('.endMessage').appendChild(resultMessage);
     document.querySelector('.endMessage').appendChild(pressClickToRestart);
     clearBeforeRestart();
