@@ -59,7 +59,7 @@ h1 {
   font-size: 2em;
 }
 
-.resultMessage {
+.resultMessage, .timeMessage{
   text-align: center;
 }
 /*
@@ -157,6 +157,12 @@ hide element
   display: none !important;
 }
 
+.timer {
+  display: inline-block;
+  margin-right: 10px;
+  float: right;
+  pointer-events: none;
+}
 
 /*
 animation's
