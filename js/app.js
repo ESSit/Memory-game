@@ -14,6 +14,13 @@ let moveElement = document.querySelector('.moves');
 // select stars elements
 let starsElements = document.querySelectorAll('.fa-star');
 
+// timer variables
+
+let seconds = -1;
+let minutes = 0;
+let timeout;
+let startFlag = 0;
+
 /*
     - list all cards in deck
 */
@@ -80,6 +87,10 @@ let openCard = function () {
       event.target.classList.add('open', 'show', 'animationCardOpen');
     }
   }
+
+  if (document.querySelectorAll('.deck .open').length == 1) {
+    startTimer();
+  }
 };
 
 // delite event and start check two opened card
@@ -126,8 +137,6 @@ let deliteStar = function () {
     starsElements[2].classList.add('starHidden');
     starsElements[0].classList.add('starHidden');
     starsElements[1].classList.remove('starHidden');
-  } else if (Number(moveElement.textContent) == 35) {
-    starsElements[1].classList.add('starHidden');
   }
 };
 
@@ -199,10 +208,14 @@ let checkWin = function () {
     let pressClickToRestart = document.createElement('div');
     pressClickToRestart.textContent = 'Click to start Again';
     pressClickToRestart.className = 'pressClickToRestart';
+    let timeMessage = document.createElement('div');
+    timeMessage.textContent = (document.querySelector('.timer').textContent) + ' seconds';
+    timeMessage.className = 'timeMessage';
     document.querySelector('.endMessage').appendChild(starMessage);
     document.querySelector('.starMessage').appendChild(starClone);
     document.querySelector('.endMessage').appendChild(congratulationMessage);
     document.querySelector('.endMessage').appendChild(resultMessage);
+    document.querySelector('.endMessage').appendChild(timeMessage);
     document.querySelector('.endMessage').appendChild(pressClickToRestart);
     clearBeforeRestart();
     document.addEventListener('click', start, false);
@@ -256,6 +269,11 @@ let clearBeforeRestart = function () {
   for (let x = 0; clearOpen.length > x; x++) {
     clearOpen[x].classList.remove('open', 'show', 'animationCardOpen');
   }
+
+  clearTimeout(timeout);
+  seconds = -1;
+  minutes = 0;
+  startFlag = 0;
 };
 
 // delite content and message after restart
@@ -276,9 +294,10 @@ let deliteStarHidden = function () {
   }
 };
 
-// delite moves counte
+// delite moves counter and time counter;
 let deliteMove = function () {
   moveElement.textContent = '';
+  document.querySelector('.timer').textContent = '00:00';
 };
 
 //main restart function
@@ -293,3 +312,37 @@ restartButton.addEventListener('click', restart, false);
 
 // start game on click
 document.addEventListener('click', start, false);
+
+//start timer
+let startTimer = function () {
+  if (startFlag == 0) {
+    timer();
+    startFlag = 1;
+  }
+};
+
+// timer function
+let timer = function () {
+  if (seconds == 59) {
+    minutes += 1;
+    seconds = -1;
+    seconds += 1;
+  } else {
+    seconds += 1;
+  }
+
+  let secondsPrint = seconds;
+  let minutesPrint = minutes;
+  if (seconds < 10) {
+    secondsPrint = '0' + seconds;
+  }
+
+  if (minutes == 0) {
+    minutesPrint = '00';
+  } else if (minutes < 10) {
+    minutesPrint = '0' + minutes;
+  }
+
+  document.querySelector('.timer').textContent = minutesPrint + ':' + secondsPrint;
+  timeout = setTimeout(timer, 1000);
+};
